@@ -135,9 +135,8 @@ dictReturn = r.json()['retorno']
 dictCategories = dictReturn['categorias']
 
 for category in dictCategories:
-    id = category['categoria']
-    id = id['id']
+    categoryData = category['categoria']
+    id = categoryData['id']
     print(id)
-    description = category['categoria']
-    description = description['descricao']
+    description = categoryData['descricao']
     print(description)
