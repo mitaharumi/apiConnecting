@@ -1,5 +1,7 @@
 from access import apiKeyTheMovieDataBaseV3, apiKeyTheMovieDataBaseV4
 import requests
+import pprint
+
 
 """
     # HTTP requests METHODS
@@ -69,7 +71,7 @@ print('>> TEXT')
 print(r.text)
 print('>> JSON')
 print(r.json())
-# << API version 3 (END)
+# << API version 3 (END example)
 
 # >> API version 4
 apiVersion4 = '4'
@@ -93,9 +95,18 @@ print(r.text)
 print('>> JSON')
 print(r.json())
 
+# >> API version 4 (END example)
+
 # search movie:
 
 endpointPath = f'search/movie'
-endpoint = f'{protocol}://{domain}/{apiVersion4}/{endpointPath}?api_key={apiKeyV3}&query=Shrek'
+querySearch = 'Shrek'
+endpoint = f'{protocol}://{domain}/{apiVersion4}/{endpointPath}?api_key={apiKeyV3}&query={querySearch}'
 print(endpoint)
-# >> API version 4 (END)
+headers = {
+    'Authorization': f'Bearer'{apiKeyV4},
+    'Content-Type':'aplication/json;charset=utf-8',
+}
+
+r = requests.get(endpoint)
+pprint.pprint(r.json())
